@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-
-interface TopMenu {
-  title: string;
-  link: string;
-}
+import { TopMenu } from './components';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +7,7 @@ interface TopMenu {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = '拼夕夕';
-  menus: TopMenu[] = [{
+  topMenus: TopMenu[] = [{
     title: '热门',
     link: ''
   }, {
@@ -64,4 +59,8 @@ export class AppComponent {
     title: '家具',
     link: ''
   }];
+
+  handleTabSelected(topMenu: TopMenu) {
+    console.log(topMenu);
+  }
 }
