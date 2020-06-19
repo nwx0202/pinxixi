@@ -1,5 +1,5 @@
 import { Component, ViewChildren } from '@angular/core';
-import { TopMenu, ImageSlider, ImageSliderComponent } from './components';
+import { TopMenu, ImageSlider, ImageSliderComponent } from './shared/components';
 
 @Component({
   selector: 'app-root',
@@ -97,12 +97,12 @@ export class AppComponent {
   ];
 
   handleTabSelected(topMenu: TopMenu) {
-    console.log(topMenu);
+    // console.log(topMenu);
   }
 
   ngAfterViewInit(): void {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
-    console.log(this.imageSlider);
+    // console.log(this.imageSlider);
   }
 }

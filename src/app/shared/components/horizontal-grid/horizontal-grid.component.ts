@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Emoji } from '../../decorators';
 
 @Component({
   selector: 'app-horizontal-grid',
@@ -6,12 +7,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./horizontal-grid.component.css']
 })
 export class HorizontalGridComponent implements OnInit {
-  @Output() usernameChange = new EventEmitter();
   private _username = '';
+  @Output() usernameChange = new EventEmitter();
+  @Emoji() result = 'Hello';
 
   constructor() { }
 
   ngOnInit() {
+    console.log(this.result);
   }
 
   @Input()
