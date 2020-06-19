@@ -8,6 +8,7 @@ import { TopMenu, ImageSlider, ImageSliderComponent } from './components';
 })
 export class AppComponent {
   @ViewChildren('imageSlider') imageSlider: ImageSliderComponent;
+  username;
 
   topMenus: TopMenu[] = [{
     title: '热门',

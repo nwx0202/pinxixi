@@ -17,7 +17,6 @@ export class ImageSliderComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() sliderHeight = '160px';
   @Input() intervalBySecond = 2;
   @ViewChild('imageSlider', {static: true}) imageSlider: ElementRef;
-  @ViewChildren('img') imgs: QueryList<ElementRef>;
   selectedIndex = 0;
   intervalId;
 
