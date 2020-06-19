@@ -5,14 +5,16 @@ import { FormsModule } from '@angular/forms';
 import {
   ScrollableTabComponent,
   ImageSliderComponent,
-  HorizontalGridComponent
+  HorizontalGridComponent,
 } from './components';
+import { GridItemDirective } from './directives';
 
 @NgModule({
   declarations: [
     ScrollableTabComponent,
     ImageSliderComponent,
-    HorizontalGridComponent
+    HorizontalGridComponent,
+    GridItemDirective
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import {
     FormsModule,
     ScrollableTabComponent,
     ImageSliderComponent,
-    HorizontalGridComponent
+    HorizontalGridComponent,
+    GridItemDirective
   ]
 })
 export class SharedModule { }
