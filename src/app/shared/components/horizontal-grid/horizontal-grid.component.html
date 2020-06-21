@@ -1,4 +1,4 @@
-<div appGridItem>
-  <img src="" alt="" appGridItemImg>
-  <span appGridItemTitle></span>
+<div appGridItem *ngFor="let item of channels">
+  <img [src]="item.icon" alt="" [appGridItemImage]="'4rem'" [fitMode]="'cover'">
+  <span appGridItemTitle>{{ item.title }}</span>
 </div>
