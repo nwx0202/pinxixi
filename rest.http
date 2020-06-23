@@ -1,0 +1,22 @@
+@baseUrl ='';
+
+GET https://xiaoce-discount-storage-api-ms.juejin.im/v1/getNewUserDiscountTicketDetail?uid=&client_id=&token=&src=web HTTP/1.1
+
+###
+POST https://web-api.juejin.im/query HTTP/1.1
+Content-Type: application/json
+
+{
+    "operationName": "",
+    "query": "",
+    "variables": {
+        "first": 20,
+        "after": "",
+        "order": "POPULAR"
+    },
+    "extensions": {
+        "query": {
+            "id": "21207e9ddb1de777adeaca7a2fb38030"
+        }
+    }
+}
