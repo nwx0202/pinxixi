@@ -26,8 +26,14 @@ export class HomeDetailComponent implements OnInit {
       this.cd.markForCheck();
     });
 
-    this.channels = this.service.getChannels();
-    this.imageSliders = this.service.getBanners();
+    this.service.getChannels().subscribe(channels => {
+      this.channels = channels;
+      this.cd.markForCheck();
+    });
+    this.service.getBanners().subscribe(banners => {
+      this.imageSliders = banners;
+      this.cd.markForCheck();
+    });
   }
 
 }
