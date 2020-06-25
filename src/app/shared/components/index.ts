@@ -1,5 +1,3 @@
-import { from } from 'rxjs';
-
 /**
  * 使用index.ts的两个好处
  * 1. 缩短引用的路径
@@ -8,3 +6,4 @@ import { from } from 'rxjs';
 export * from './scrollable-tab';
 export * from './image-slider';
 export * from './horizontal-grid';
+export * from './count-down';

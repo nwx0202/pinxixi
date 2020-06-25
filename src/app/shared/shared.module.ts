@@ -6,6 +6,7 @@ import {
   ScrollableTabComponent,
   ImageSliderComponent,
   HorizontalGridComponent,
+  CountDownComponent,
 } from './components';
 import { GridItemDirective, GridItemImageDirective, GridItemTitleDirective } from './directives';
 import { AgoPipe } from './pipes';
@@ -18,7 +19,8 @@ import { AgoPipe } from './pipes';
     GridItemDirective,
     GridItemImageDirective,
     GridItemTitleDirective,
-    AgoPipe
+    AgoPipe,
+    CountDownComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +35,8 @@ import { AgoPipe } from './pipes';
     GridItemDirective,
     GridItemImageDirective,
     GridItemTitleDirective,
-    AgoPipe
+    AgoPipe,
+    CountDownComponent
   ]
 })
 export class SharedModule { }
