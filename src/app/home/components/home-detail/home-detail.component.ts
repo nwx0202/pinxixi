@@ -1,7 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { ImageSlider, Channel } from 'src/app/shared/components';
 import { ActivatedRoute } from '@angular/router';
 import { HomeService } from '../../services';
+import { filter, map } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home-detail',
@@ -9,10 +11,11 @@ import { HomeService } from '../../services';
   styleUrls: ['./home-detail.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeDetailComponent implements OnInit {
-  selectedLabLink;
-  imageSliders: ImageSlider[] = [];
-  channels: Channel[] = [];
+export class HomeDetailComponent implements OnInit, OnDestroy {
+  selectedLabLink$: Observable<string>;
+  imageSliders$: Observable<ImageSlider[]>;
+  channels$: Observable<Channel[]>;
+  sub: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,19 +24,22 @@ export class HomeDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.selectedLabLink = params.get('tabLink');
-      this.cd.markForCheck();
+    this.selectedLabLink$ = this.route.paramMap
+    .pipe(
+      filter(params => params.has('tabLink')),
+      map(params => params.get('tabLink'))
+    );
+
+    this.sub = this.route.queryParamMap.subscribe(params => {
+      console.log('查询参数: ', params);
     });
 
-    this.service.getChannels().subscribe(channels => {
-      this.channels = channels;
-      this.cd.markForCheck();
-    });
-    this.service.getBanners().subscribe(banners => {
-      this.imageSliders = banners;
-      this.cd.markForCheck();
-    });
+    this.channels$ = this.service.getChannels()
+    this.imageSliders$ = this.service.getBanners();
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
 }

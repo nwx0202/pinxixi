@@ -1,7 +1,7 @@
-<div *ngIf="selectedLabLink === 'hot' else other">
-  <app-image-slider [sliders]="imageSliders" #imageSlider></app-image-slider>
+<div *ngIf="(selectedLabLink$ | async) === 'hot' else other">
+  <app-image-slider [sliders]="imageSliders$ | async" #imageSlider></app-image-slider>
   <app-horizontal-grid>
-    <div appGridItem *ngFor="let item of channels">
+    <div appGridItem *ngFor="let item of channels$ | async">
       <img [src]="item.icon" alt="" [appGridItemImage]="'2rem'" [fitMode]="'cover'">
       <span [appGridItemTitle]="'0.6rem'">{{ item.title }}</span>
     </div>

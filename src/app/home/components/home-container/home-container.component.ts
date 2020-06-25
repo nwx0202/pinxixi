@@ -1,16 +1,18 @@
-import { Component, OnInit, ViewChildren, Inject } from '@angular/core';
+import { Component, OnInit, ViewChildren, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { ImageSliderComponent, TopMenu } from 'src/app/shared/components';
 import { Router } from '@angular/router';
 import { HomeService, token } from '../../services';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home-container',
   templateUrl: './home-container.component.html',
-  styleUrls: ['./home-container.component.css']
+  styleUrls: ['./home-container.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeContainerComponent implements OnInit {
   @ViewChildren('imageSlider') imageSlider: ImageSliderComponent;
-  topMenus: TopMenu[] = [];
+  topMenus$: Observable<TopMenu[]>;
 
   constructor(
     private router: Router,
@@ -19,9 +21,7 @@ export class HomeContainerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.service.getTabs().subscribe(tabs => {
-      this.topMenus = tabs;
-    });
+    this.topMenus$ = this.service.getTabs();
 
     console.log(this.baseUrl);
   }

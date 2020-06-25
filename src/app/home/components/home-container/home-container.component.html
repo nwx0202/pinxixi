@@ -1,5 +1,5 @@
 <app-scrollable-tab
-  [menus]="topMenus"
+  [menus]="topMenus$ | async"
   [backgroundColor]="'red'"
   [titleColor]="'#fff'"
   [titleActiveColor]="'yellow'"
